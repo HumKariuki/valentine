@@ -12,21 +12,35 @@
 box-sizing:border-box;
 }
 
-body{
-margin:0;
-font-family:Segoe UI, sans-serif;
-color:white;
-text-align:center;
-overflow-x:hidden;
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* Background */
-.bg{
-position:fixed;
-inset:0;
-background:url("background.jpg") center/cover no-repeat;
-filter:brightness(0.4);
-z-index:-2;
+.bg {
+    position: fixed;
+    inset: 0;
+    background: url("background.jpg") center/cover no-repeat;
+    z-index: -2;
+}
+
+/* Overlay to make background clearer and content readable */
+.bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3); /* Adjust the darkness here (0.0 to 1.0) */
+    z-index: 0;
+}
+
+/* Optional: slightly sharpen background image */
+.bg img {
+    filter: brightness(0.7) contrast(1.1); /* Adjust these values as needed */
 }
 
 .overlay{
@@ -254,6 +268,7 @@ document.getElementById("slide").src=imgs[i];
 
 </body>
 </html>
+
 
 
 
