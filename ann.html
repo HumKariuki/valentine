@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Happy Valentine Ann ❤️</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Segoe UI, sans-serif;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* Background */
+.bg{
+position:fixed;
+inset:0;
+background:url("background.jpg") center/cover no-repeat;
+filter:brightness(0.4);
+z-index:-2;
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:linear-gradient(135deg,#ff4d6d88,#ff8fab88);
+z-index:-1;
+}
+
+/* Card */
+.card{
+margin:20px;
+padding:20px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+border-radius:20px;
+animation:fade 1.5s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;}
+}
+
+/* Title glow */
+h1{
+font-size:26px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 5px white;}
+to{text-shadow:0 0 20px pink;}
+}
+
+/* Button pulse */
+button{
+padding:12px 20px;
+border:none;
+border-radius:25px;
+font-size:16px;
+background:white;
+color:#ff4d6d;
+margin-top:15px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+}
+
+/* Gallery */
+.gallery img{
+width:90%;
+max-width:320px;
+border-radius:15px;
+margin-top:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+/* Hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:float 6s linear forwards;
+}
+
+@keyframes float{
+to{transform:translateY(-110vh);opacity:0;}
+}
+
+/* Sparkles */
+.sparkle{
+position:fixed;
+font-size:14px;
+animation:explode 1.2s forwards;
+}
+
+@keyframes explode{
+to{transform:scale(3);opacity:0;}
+}
+
+/* Popup */
+.popup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
+}
+
+.popup-content{
+background:white;
+color:#ff4d6d;
+padding:20px;
+border-radius:15px;
+width:85%;
+}
+
+/* Footer */
+footer{
+margin:20px 0;
+font-size:14px;
+opacity:0.9;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6f20b8a6d2.mp3?filename=romantic-background-112191.mp3">
+</audio>
+
+<div class="card">
+
+<h1>❤️ Happy Valentine Ann ❤️</h1>
+
+<p>
+My secret admirer, my favorite person… you are caring, loving,
+beautiful, and incredibly smart. I admire how you always
+unajituma in everything you do — it’s one of the many reasons
+you stand out every day.
+
+You carry yourself with such grace… your beautiful curves,
+your smile, and your presence light up every room.
+You are stunning inside and out.
+
+And honestly… your cooking? Pure magic.
+Everything you do has that special touch.
+
+Thank you for being such a bright light in my life.
+I appreciate you more than words can say.
+
+Happy Valentine’s, my best… my Ann ❤️
+</p>
+
+<button onclick="loveAction()">Tap for Love ✨</button>
+
+</div>
+
+<div class="gallery">
+<img id="slide" src="photo1.jpg">
+</div>
+
+<footer>
+Designed with love by Hum ❤️
+</footer>
+
+<!-- Popup -->
+
+<div class="popup" id="popup">
+<div class="popup-content">
+
+<h3>Secret Message 💌</h3>
+
+<p>
+Ann… you are my happiness, my calm,
+and my favorite teammate in life.
+Never forget how amazing you are. ❤️
+</p>
+
+<button onclick="closePopup()">Close</button>
+
+</div>
+</div>
+
+<script>
+
+/* Music start */
+document.body.addEventListener("click",()=>{
+document.getElementById("music").play();
+},{once:true});
+
+/* Floating hearts */
+function heart(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,500);
+
+/* Sparkle fireworks */
+function sparkle(){
+let s=document.createElement("div");
+s.className="sparkle";
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*80+"vh";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),1200);
+}
+
+/* Button action */
+function loveAction(){
+
+for(let i=0;i<30;i++){
+setTimeout(sparkle,i*80);
+}
+
+document.getElementById("popup").style.display="flex";
+}
+
+/* Popup close */
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+/* Gallery slideshow */
+let imgs=["photo1.jpg","photo2.jpg"];
+let i=0;
+
+setInterval(()=>{
+i=(i+1)%imgs.length;
+document.getElementById("slide").src=imgs[i];
+},3000);
+
+</script>
+
+</body>
+</html>
